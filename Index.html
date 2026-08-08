@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>unknown</title>
+</head>
+<style>
+    body{
+background-color: #f4f4f4;
+        font-family: sans-serif;
+        padding: 20px;
+      }
+
+      h1 {
+        color: darkred;
+      }
+
+      button {
+        background-color: green;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+      }
+       .menu-card {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    .food-img{
+       width:100%;
+    border-radius:8px;
+    }
+   .success-msg {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .error-msg {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+    </style>
+<body>
+   <h1>Michael kitchen</h1>
+   <h2>Subscribe to my channel</h2>
+   <p>Fresh home cooked meals served daily </p>
+   <div class="menu-card"> 
+  <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Delicious Food" class="food-img"> 
+   <h3>Todays</h3>
+      <ul>
+      <li>Jollof rice with chicken-$10</li> 
+      <li>Fried Plantains-$4</li>
+       </ul>
+        <p>Your Name:</p>
+<input id="userName"type="text"placeholder="Michaeldawson">  
+   <p>Special Instructions:</p> 
+   <input id="userNote"type="text"placeholder="Extra-spicey">
+    <p>Quantity (Jollof Rice - $10 each):</p>
+<select id="foodQuantity">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+</select>
+   <br><br>
+   <button onclick="placeOrder()">Place an Order</button> <button onclick="resetForm()">Clear</button> 
+   <div id="orderOutput"></div>
+  </div>
+  <script>
+function placeOrder() {
+    var name = document.getElementById('userName').value;
+    var note = document.getElementById('userNote').value;
+    var output = document.getElementById('orderOutput');
+    var quantity = Number(document.getElementById('foodQuantity').value);
+    // Check if the user entered a name
+    if (name.trim() === '') {
+      output.className = 'error-msg';
+      output.innerText = 'Please enter your name!';
+      return;
+     }
+
+    // Display confirmation
+   output.className = 'success-msg';
+   var totalPrice = quantity * 10;
+output.innerText = 'Order placed for ' + quantity + ' Jollof Rice ($' + totalPrice + ') for ' + name + '. Note: ' + note;
+    // Clear input fields
+    document.getElementById('userName').value = '';
+    document.getElementById('userNote').value = '';
+  }
+ function resetForm() {
+  document.getElementById('userName').value = '';
+  document.getElementById('userNote').value = '';
+  
+  var output = document.getElementById('orderOutput');
+  output.innerText = '';
+  output.className = '';
+} 
+</script>
+</body>
+</html>
