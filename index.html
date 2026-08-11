@@ -1,102 +1,163 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>unknown</title>
-</head>
-<style>
-    body{
-background-color: #f4f4f4;
-        font-family: sans-serif;
-        padding: 20px;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael's Kitchen</title>
+  <style>
+    /* Reset & base styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
 
-      h1 {
-        color: darkred;
-      }
+    /* Container card */
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
 
-      button {
-        background-color: green;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-      }
-       .menu-card {
-      background-color: white;
-      padding: 15px;
-      border-radius: 10px;
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    /* Menu list */
+    ul {
+      list-style-type: none;
+      margin: 20px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+    li {
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+    }
+
+    /* Input fields & Select */
+    p {
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 12px;
       border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
     }
-    .food-img{
-       width:100%;
-    border-radius:8px;
+    input[type="text"]:focus, select:focus {
+      border-color: #25D366;
     }
-   .success-msg {
-    color: green;
-    font-weight: bold;
-    margin-top: 10px;
-  }
 
-  .error-msg {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-    </style>
+    /* WhatsApp Button */
+    button {
+      width: 100%;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 14px;
+      margin-top: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background-color: #1ebc57;
+    }
+
+    /* Callout box */
+    .promo {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #eef9f2;
+      border-radius: 8px;
+    }
+    .promo h2 {
+      font-size: 1.1rem;
+      color: #1ebc57;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
 <body>
-   <h1>Michael kitchen</h1>
-   <h2>Subscribe to my channel</h2>
-   <p>Fresh home cooked meals served daily </p>
-   <div class="menu-card"> 
-  <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Delicious Food" class="food-img"> 
-   <h3>Todays</h3>
-      <ul>
-      <li>Jollof rice with chicken-$10</li> 
-      <li>Fried Plantains-$4</li>
-       </ul>
-        <p>Your Name:</p>
-<input id="userName" type="text"placeholder="Michaeldawson">  
-   <p>Special Instructions:</p> 
-   <input id="userNote" type="text"placeholder="Extra-spicy">
+
+  <div class="container">
+    <h1>Michael's Kitchen 🍲</h1>
+
+    <ul>
+      <li><span>Jollof Rice with Chicken</span> <span>$10</span></li>
+      <li><span>Fried Plantains</span> <span>$4</span></li>
+    </ul>
+
+    <p>Your Name:</p>
+    <input id="userName" type="text" placeholder="Michael Dawson">
+
+    <p>Special Instructions:</p>
+    <input id="userNote" type="text" placeholder="Extra spicy">
+
     <p>Quantity (Jollof Rice - $10 each):</p>
-<select id="foodQuantity">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-</select>
-   <br><br>
-   <button onclick="placeOrder()">Place an Order</button> <button onclick="resetForm()">Clear</button> 
-   <div id="orderOutput"></div>
-   </div>
-    <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f4f4f4;">
-  <h2>Need a website like this for your business?</h2>
-  <p>I build fast, custom websites for local businesses and restaurants.</p>
-  <p>Contact me today: <strong>michaeladele98@gmail.com</strong> or <strong>08153031189</strong></p>
+    <select id="foodQuantity">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <button onclick="placeOrder()">Place Order via WhatsApp</button>
+    <div id="orderOutput"></div>
+
+    <div class="promo">
+      <h2>Need a website like this for your business?</h2>
+      <p>I build fast, custom websites for local businesses and restaurants.</p>
+      <p>Contact me: <strong>michaeladele98@gmail.com</strong></p>
     </div>
+  </div>
+
   <script>
     function placeOrder() {
-  var name = document.getElementById('userName').value;
-  var note = document.getElementById('userNote').value;
-  var quantity = document.getElementById('foodQuantity').value;
+      var name = document.getElementById('userName').value;
+      var note = document.getElementById('userNote').value;
+      var quantity = document.getElementById('foodQuantity').value;
 
-  if (name.trim() === '') {
-    alert('Please enter your name');
-    return;
-  }
+      if (name.trim() === '') {
+        alert('Please enter your name');
+        return;
+      }
 
-  // Format the order message
-  var message = "Hello! I would like to place an order:%0A" +
-                "- Name: " + encodeURIComponent(name) + "%0A" +
-                "- Quantity: " + quantity + " Jollof Rice%0A" +
-                "- Special Note: " + encodeURIComponent(note);
+      var message = "Hello! I would like to place an order:%0A" +
+                    "- Name: " + encodeURIComponent(name) + "%0A" +
+                    "- Quantity: " + quantity + " Jollof Rice%0A" +
+                    "- Special Note: " + encodeURIComponent(note);
 
-  // Your phone number in international format
-  var phoneNumber = "2348153031189";
+      var phoneNumber = "2348153031189";
+      window.location.href = "https://wa.me/" + phoneNumber + "?text=" + message;
+    }
+  </script>
 
-  // Redirect to WhatsApp
-  window.location.href = "https://wa.me/" + phoneNumber + "?text=" + message;
-    }  
-</script>
 </body>
 </html>
