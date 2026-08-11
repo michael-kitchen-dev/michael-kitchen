@@ -75,34 +75,28 @@ background-color: #f4f4f4;
   <p>Contact me today: <strong>michaeladele98@gmail.com</strong> or <strong>08153031189</strong></p>
     </div>
   <script>
-function placeOrder() {
-    var name = document.getElementById('userName').value;
-    var note = document.getElementById('userNote').value;
-    var output = document.getElementById('orderOutput');
-    var quantity = Number(document.getElementById('foodQuantity').value);
-    // Check if the user entered a name
-    if (name.trim() === '') {
-      output.className = 'error-msg';
-      output.innerText = 'Please enter your name!';
-      return;
-     }
+    function placeOrder() {
+  var name = document.getElementById('userName').value;
+  var note = document.getElementById('userNote').value;
+  var quantity = document.getElementById('foodQuantity').value;
 
-    // Display confirmation
-   output.className = 'success-msg';
-   var totalPrice = quantity * 10;
-output.innerText = 'Order placed for ' + quantity + ' Jollof Rice ($' + totalPrice + ') for ' + name + '. Note: ' + note;
-    // Clear input fields
-    document.getElementById('userName').value = '';
-    document.getElementById('userNote').value = '';
+  if (name.trim() === '') {
+    alert('Please enter your name');
+    return;
   }
- function resetForm() {
-  document.getElementById('userName').value = '';
-  document.getElementById('userNote').value = '';
-  
-  var output = document.getElementById('orderOutput');
-  output.innerText = '';
-  output.className = '';
-} 
+
+  // Format the order message
+  var message = "Hello! I would like to place an order:%0A" +
+                "- Name: " + encodeURIComponent(name) + "%0A" +
+                "- Quantity: " + quantity + " Jollof Rice%0A" +
+                "- Special Note: " + encodeURIComponent(note);
+
+  // Your phone number in international format
+  var phoneNumber = "2348153031189";
+
+  // Redirect to WhatsApp
+  window.location.href = "https://wa.me/" + phoneNumber + "?text=" + message;
+    }  
 </script>
 </body>
 </html>
